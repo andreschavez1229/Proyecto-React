@@ -1,6 +1,6 @@
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Container, InputGroup, FormControl, Button, Row, Card } from 'react-bootstrap';
+import { Container, InputGroup, FormControl, Button, Row,} from 'react-bootstrap';
 import '@fontsource/roboto'
 import { useState, useEffect } from 'react';
 
@@ -22,13 +22,16 @@ const Buscador = () => {
                         onKeyPress={ event => {
                             if (event.key === "Enter");
                             console.log("Presionaste enter"); 
+                            //Aqui detecta con un clg que se envia un evento presionando enter o más abajo presionando el boton de buscar
                         }}
                         onChange={event => setSearchInput(event.target.value)}
 
                         />
                         <Button onClick={() => {console.log("Presionaste el botón buscar")}}>
-                            "Buscar"
-                        </Button>
+                            Buscar
+                        </Button> 
+
+                            
 
 
                 </InputGroup>
