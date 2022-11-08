@@ -21,7 +21,7 @@ function App() {
         <br/>
           <br/>
       <Buscador/>
-      
+
       <TarjetasCanciones/>
 
     </Container>

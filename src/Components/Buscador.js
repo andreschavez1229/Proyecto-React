@@ -7,7 +7,9 @@ import { useState, useEffect } from 'react';
 
 const Buscador = () => {
     const [searchInput, setSearchInput] = useState(""); //Aqui ponemos nuestro setter y nuestro getter con un estado inicial que es un string vacio
-
+    useEffect (() => {
+         
+    })
 
 
 
