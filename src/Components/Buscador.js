@@ -26,6 +26,10 @@ fetch("http://accounts.spotify.com/api/token", authParemeters)
     }, []) 
 
 
+async function search() {
+    console.log("Buscando a " + searchInput)
+} 
+
 return (
     <>
     <div className='Buscador'>
@@ -36,13 +40,13 @@ return (
                     type='input'
                     onKeyPress={event => {
                         if (event.key === "Enter");
-                        console.log("Presionaste enter");
+                        search("Presionaste enter");
                         //Aqui detecta con un clg que se envia un evento presionando enter o más abajo presionando el boton de buscar
                     }}
                     onChange={event => setSearchInput(event.target.value)}
 
                 />
-                <Button onClick={() => { console.log("Presionaste el botón buscar") }}>
+                <Button onClick={() => { search("Presionaste el botón buscar") }}>
                     Buscar
                 </Button>
 
