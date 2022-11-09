@@ -41,8 +41,12 @@ async function search() {
         }
 var artistID = await fetch ('https://api.spotify.com/v1/search?q=' + searchInput + '&type=artist', artistParameters) 
     .then(response => response.json())
-    .then(data => console.log(data))
+    .then(data => {return data.artist.items[0].id})
+
+    console.log("Artist ID is" + artistID)
 }
+
+//Petición del tipo GET para obtener todos los albumes del artista
 
 
 return (
