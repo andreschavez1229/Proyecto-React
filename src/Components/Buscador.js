@@ -10,7 +10,8 @@ const CLIENT_SECRET = "414463376b2d4a8db5138eb97fb73a64"
 
 const Buscador = () => {
     const [searchInput, setSearchInput] = useState(""); //Aqui ponemos nuestro setter y nuestro getter con un estado inicial que es un string vacio
-    //API Access token
+    const [accessToken, setAccessToken] = useState(""); 
+    //API ´Access token
     useEffect(() => {
         var authParemeters = {
             method: 'POST',
@@ -21,9 +22,8 @@ const Buscador = () => {
 }
 fetch("http://accounts.spotify.com/api/token", authParemeters)   
     .then(result => result.json())
-    .then(data => console.log(data))
-    }, [])
-
+    .then(data => setAccessToken(data.access_token)) //Esto nos devuelve el consola unicamente nuestro access token y posteriormente la guardamos con nuestro setter
+    }, []) 
 
 
 return (
