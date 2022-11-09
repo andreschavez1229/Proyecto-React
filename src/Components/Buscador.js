@@ -22,13 +22,28 @@ const Buscador = () => {
 }
 fetch("http://accounts.spotify.com/api/token", authParemeters)   
     .then(result => result.json())
-    .then(data => setAccessToken(data.access_token)) //Esto nos devuelve el consola unicamente nuestro access token y posteriormente la guardamos con nuestro setter
+    // .then(data => console.log(data.access_token))
+    //Este clg nos devuelve en consola unicamente nuestro access token y posteriormente la guardamos con nuestro setter
+    .then(data => setAccessToken(data.access_token))
     }, []) 
 
 
 async function search() {
-    console.log("Buscando a " + searchInput)
-} 
+    console.log("Buscando a " + searchInput);
+
+    //Peticion del tipo GET para obtener el ID del Artista
+    var artistParameters = {
+        method: 'GET',
+        headers: {
+                 'Content-Type': 'application/json',
+                 'Authorization': 'Bearer ' + accessToken
+                }
+        }
+var artistID = await fetch ('https://api.spotify.com/v1/search?q=' + searchInput + '&type=artist', artistParameters) 
+    .then(response => response.json())
+    .then(data => console.log(data))
+}
+
 
 return (
     <>
@@ -39,14 +54,16 @@ return (
                     placeholder='Ingresa el nombre de un artista'
                     type='input'
                     onKeyPress={event => {
-                        if (event.key === "Enter");
-                        search("Presionaste enter");
+                        if (event.key == "Enter") {
+                            search();
+                        }
+                        
                         //Aqui detecta con un clg que se envia un evento presionando enter o más abajo presionando el boton de buscar
                     }}
                     onChange={event => setSearchInput(event.target.value)}
 
                 />
-                <Button onClick={() => { search("Presionaste el botón buscar") }}>
+                <Button onClick={search}>
                     Buscar
                 </Button>
 
